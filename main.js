@@ -79,10 +79,10 @@ autoUpdater.on('error', () => {
   sendStatusToWindow('Error in auto-updater.')
 })
 autoUpdater.on('download-progress', (progressObj) => {
-  let log_message = 'Download speed: ' + progressObj.bytesPerSecond
-  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%'
-  log_message = log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')'
-  sendStatusToWindow(log_message)
+  let logMessage = 'Download speed: ' + progressObj.bytesPerSecond
+  logMessage = logMessage + ' - Downloaded ' + progressObj.percent + '%'
+  logMessage = logMessage + ' (' + progressObj.transferred + '/' + progressObj.total + ')'
+  sendStatusToWindow(logMessage)
 })
 autoUpdater.on('update-downloaded', (info) => {
   sendStatusToWindow('Update downloaded; will install in 5 seconds')
@@ -129,5 +129,6 @@ autoUpdater.on('update-downloaded', (info) => {
 })
 
 app.on('ready', function () {
+  console.log('now checking for updates ...')
   autoUpdater.checkForUpdates()
 })
